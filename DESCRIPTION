@@ -1,0 +1,43 @@
+Package: metflowR
+Type: Package
+Title: metflowR
+Version: 0.99.85
+Date: 2018-10-07
+Author: Xiaotao Shen, Zhengjiang Zhu
+Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
+Description: A data cleaning (preparation) and statistical analysis pipeline for large-scale mass spectrometry-based untargeted metabolomics.
+LazyData: true
+Depends: R (>= 3.0)
+Imports:
+    BiocParallel,
+    ggplot2,
+    pcaMethods,
+    impute,
+    missForest,
+    scatterplot3d,
+    pheatmap,
+    beeswarm,
+    ellipse,
+    pls,
+    plsdepot,
+    pROC,
+    e1071,
+    snow,
+    methods,
+    graphics,
+    grDevices,
+    utils,
+    stats,
+    readr,
+    readxl
+License: GPL-2 | file LICENSE
+URL: https://github.com/jaspershen/metflowR
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown,
+    BiocStyle,
+    RUnit,
+    BiocGenerics
+VignetteBuilder: knitr
+Note:
+biocViews: Metabolomics, MassSpectrometry, BatchEffect, Normalization
