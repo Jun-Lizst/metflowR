@@ -39,24 +39,24 @@
 #' @param path The directory you want to write results.
 #' @return All the results can be got form other functions and instruction.
 #' @export
-#' @details The manual of MetCleaning can be found in \href{https://github.com/jaspershen/MetCleaning/blob/master/vignettes/MetCleaning.pdf}{github}
+#' @details The manual of metflowR can be found in \href{https://github.com/jaspershen/metflowR/blob/master/vignettes/metflowR.pdf}{github}
 #' or in \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:d8b5fcff-c725-4689-a97d-7ff106322fb6}{my library}.
 #' @examples
 #' \donttest{
 #' #' #load the demo data
-#' data(data, package = "MetCleaning")
-#' data(sample.information, package = "MetCleaning")
+#' data(data, package = "metflowR")
+#' data(sample.information, package = "metflowR")
 #'
-#' ##create a folder for MetCleaning demo
-#' dir.create("Demo for MetCleaning")
-#' setwd("Demo for MetCleaning")
+#' ##create a folder for metflowR demo
+#' dir.create("Demo for metflowR")
+#' setwd("Demo for metflowR")
 #'
 #' # export the demo data as csv
 #' write.csv(data, "data.csv", row.names = FALSE)
 #' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
 #'
-#' #run MetCleaning
-#' MetCleaning(#ImportData para
+#' #run metflowR
+#' metflowR(#ImportData para
 #' data = "data.csv",
 #' sample.information = "sample.information.csv",
 #' polarity = "positive",
@@ -65,7 +65,7 @@
 #' threads = 2)
 #'
 #' ## load the demo data
-#'data(new.group, package = "MetCleaning")
+#'data(new.group, package = "metflowR")
 #'load("met.data.after.pre")
 #'##create a folder for MetStat demo
 #'dir.create("Demo for MetStat")

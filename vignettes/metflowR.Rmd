@@ -1,0 +1,73 @@
+---
+title: "metflowR v0.99.00"
+author: "Xiaotao Shen(shenxt1990@163.com) and Zheng-Jiang Zhu"
+date: '`r Sys.Date()`'
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+vignette: |
+  %\VignetteIndexEntry{Vignette Title} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+---
+
+## **Introduction**
+******************************************
+
+### *metflowR* provides a comprehensive pipeline for data cleaning and statistical analysis of large-scale mass spectrometry (MS) based-metabolomics data. It includes missing value (MV) filtering and imputation, zero value filtering, detection of sample outliers, data normalization, data integration, data quality assessment, and common statistical analysis such as univariate and multivariate statistical analysis. This document describes the step-by-step processing metabolomics data using *metflowR*.
+
+
+## **Demo data**
+******************************************
+
+### The demo data are same with the demo data in MetFlow server, please get them [here](http://metflow.zhulab.cn/) in **Help** tab.
+
+
+## **Usage**
+******************************************
+
+### Data cleaning is integrated as a function named as *metflowR*. We use the demo data as the example. Copy the code below and paste in you R console.
+
+#### code 2: Demo data of *metflowR*
+```{r, eval=FALSE}
+library(metflowR)
+##demo data
+data(batch1, package = "metflowR")
+data(batch2, package = "metflowR")
+data(sample.information, package = "metflowR")
+##demo work directory
+dir.create("Demo for metflowR")
+setwd("Demo for metflowR")
+##write files
+write.csv(batch1, "Demo for metflowR/batch1.csv", row.names = FALSE)
+write.csv(batch2, "Demo for metflowR/batch2.csv", row.names = FALSE)
+write.csv(sample.information , "sample.information.csv", row.names = FALSE)
+```
+
+### The demo data have been added in your work directory. 
+1. "batch1.csv" and "batch2.csv" are the raw metabolomics dataset. Rows are metabolic peaks, and columns are metabolic peak abundance of samples and information of metabolic peaks. The information of metabolic peaks must contain "name" (peak name), "mz" (mass to change ratio) and "rt" (retention time). The name of sample can contain ".", but cannot contain "-" and space. And the start of sample name cannot be number. For example, "A210.a" and "A210a" are valid, but "210a" or "210-a" are invalid.
+2. "sample.information.csv" is sample information for metabolomics dataset. Column 1 is "sample.name" which is the name of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".
+
+### Then you can run *metflowR* function to do data cleaning of data. All the arguments of *metflowR* can be found in metflowR. You can use help(package = "metflowR") to see the help page of *metflowR*.
+
+#### code 3: Running of *metflowR*
+```{r, eval=FALSE}
+##demo data
+library(metflowR)
+metflowR(polarity = "positive")
+```
+
+### Running results of *metflowR*
+1. Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to remove them or not. We recommend removing all of them.
+
+2. Detection of sample outliers. In the detection of QC or subject sample outlier step (based on PCA), if there are samples which beyond the threshold you set, you should decide to remove them or not. We don't recommend to remove them, because they should be considered combined other information.
+
+#### 3.Output files. Output files of *metflowR* 
+* (1) "1 MV overview", "2MV filter", "3Zero overview" and "4Zero filter" are missing and zero values filtering information.
+* (2) "5 QC outlier filter" and "6Subject outlier filter" are sample filtering based on PCA information.
+* (3) "7 Normalization result" is the data normalization information for each batch.
+* (4) "8 Batch effect" is the batch effect both in before and after data cleaning.
+* (5) "9 metabolite plot" is the scatter plot for each feature.
+* (6) "10 Data overview" is the overview of data.
+* (7) "11 RSD overview" is the RSD distribution for each batch both before and after data cleaning.
+* (8) **"data_after_pre.csv", "qc.info.csv" and "subject.info"** are the data and sample information after data cleaning.
+* (9) "intermediate" is the intermediate data during processing.

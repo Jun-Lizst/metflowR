@@ -4,8 +4,8 @@
 
 
 setGeneric(name = "checkData",
-           def = function(data = c("batch1.demo.csv", "batch2.demo.csv"),
-                          sample.info = "sample.info.demo.csv",
+           def = function(data = c("batch1.csv", "batch2.csv"),
+                          sample.info = "sample.information.csv",
                           path = "."){
 
              sample.info.record <- NULL

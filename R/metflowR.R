@@ -78,13 +78,24 @@
 # setwd("D:/study/R/my git/metCube/version1.1/user_data/test/test")
 #
 # one.user.path <- file.path(getwd(), "one_data_cleaning")
-# load("one_data_cleaning/temp.file")
-# load("one_data_cleaning/oneDCparameter")
+# load("D:/study/R/my git/metCube/version1.1/user_data/test/test/one_data_cleaning/temp.file")
+# load("D:/study/R/my git/metCube/version1.1/user_data/test/test/one_data_cleaning/oneDCparameter")
 #
+# demo.path <- file.path("D:/study/R/my git/metflowR/data", "test")
+# dir.create(demo.path)
+#
+# load("D:/study/R/my git/metflowR/data/batch1")
+# load("D:/study/R/my git/metflowR/data/batch2")
+# load("D:/study/R/my git/metflowR/data/sample.information")
+#
+#
+# write.csv(batch1, file = file.path(demo.path, "batch1.csv"), row.names = FALSE)
+# write.csv(batch2, file = file.path(demo.path, "batch2.csv"), row.names = FALSE)
+# write.csv(sample.information, file = file.path(demo.path, "sample.information.csv"), row.names = FALSE)
 #
 # metflowR.info <- try(expr = {metflowR(
-#   data = grep("batch", x = temp.file, value = TRUE),
-#   sample.information = "sample.info.csv",
+#   data = c("batch1.csv", "batch2.csv"),
+#   sample.information = "sample.information.csv",
 #   polarity = oneDCparameter[[1]],
 #   hasIS = "no",
 #   hasQC = "yes",
@@ -118,7 +129,7 @@
 #   rt.tolerance = oneDCparameter[[30]],
 #   #DataOverview para
 #   met.plot = FALSE,
-#   path = one.user.path,
+#   path = demo.path,
 #   # worklist.from = "manual",
 #   #other slection
 #   qc.outlier.filter = TRUE,
@@ -127,11 +138,10 @@
 
 
 
-
 setGeneric(name = "metflowR",
            def = function(#ImportData para
-             data = c("batch1.demo.csv","batch2.demo.csv"),
-             sample.information = "sample.info.demo.csv",
+             data = c("batch1.csv","batch2.csv"),
+             sample.information = "sample.information.csv",
              polarity = c("positive", "negative", "none"),
              hasIS = c("no", "yes"),
              hasQC = c("yes", "no"),
@@ -146,7 +156,7 @@ setGeneric(name = "metflowR",
              imputation.method = "knn",
              k = 10,
              rowmax = 0.5,
-             colmax = 0.5,
+             colmax = 0.8,
              maxp = 1500,
              #ZeroFilter para
              zero.filter = TRUE,
@@ -258,7 +268,7 @@ setGeneric(name = "metflowR",
                  )
                  cat("Missing values filter...\n")
                  #filter mv
-                 met.data <- MZfilter(
+                 met.data <- MZfilter2(
                    MetFlowData = met.data,
                    obs.per.cutoff = obs.mv.cutoff,
                    var.per.cutoff = var.mv.cutoff,
@@ -303,7 +313,7 @@ setGeneric(name = "metflowR",
                cat("------------------------------------------------------------------\n")
                cat("Zero filter...\n")
                #filter zero
-               met.data <- MZfilter(
+               met.data <- MZfilter2(
                  MetFlowData = met.data,
                  obs.per.cutoff = obs.zero.cutoff,
                  var.per.cutoff = var.zero.cutoff,
@@ -670,14 +680,14 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
 
 
 
-.onAttach <- function(libname, pkgname){
-packageStartupMessage("metflowR
-Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
-Maintainer: Xiaotao Shen.\n2019-03-23
-Version 0.99.00
---------------
-o First release version.")
-}
+# .onAttach <- function(libname, pkgname){
+# packageStartupMessage("metflowR
+# Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
+# Maintainer: Xiaotao Shen.\n2019-03-23
+# Version 0.99.00
+# --------------
+# o First release version.")
+# }
 
 packageStartupMessage("metflowR
 Authors: Xiaotao Shen and Dr. Zhengjiang Zhu

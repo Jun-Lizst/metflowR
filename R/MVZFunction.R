@@ -38,8 +38,8 @@
 #' @examples
 #' \donttest{
 #' #load the demo data
-#' data(data, package = "MetCleaning")
-#' data(sample.information, package = "MetCleaning")
+#' data(data, package = "metflowR")
+#' data(sample.information, package = "metflowR")
 #'
 #' ##create a folder for demo
 #' dir.create("demo")
@@ -184,8 +184,8 @@ MVimputation <- function(MetFlowData,
 #' @examples
 #' \donttest{
 #' #load the demo data
-#' data(data, package = "MetCleaning")
-#' data(sample.information, package = "MetCleaning")
+#' data(data, package = "metflowR")
+#' data(sample.information, package = "metflowR")
 #'
 #' ##create a folder for demo
 #' dir.create("demo")
@@ -337,6 +337,77 @@ MZfilter <- function(MetFlowData,
 
 
 
+MZfilter2 <- function(MetFlowData,
+                     obs.per.cutoff = 0.5,
+                     var.per.cutoff = 0.5,
+                     what = "mv",
+                     path = ".") {
+  if (path != ".") {
+    dir.create(path)
+  }
+  options(warn = -1)
+
+  subject <- MetFlowData@subject
+  qc <- MetFlowData@qc
+  tags <- MetFlowData@tags
+  subject.info <- MetFlowData@subject.info
+  qc.info <- MetFlowData@qc.info
+  sample <- data.frame(subject, qc, stringsAsFactors = FALSE)
+  sample.info <- as.data.frame(rbind(subject.info, qc.info), stringsAsFactors = FALSE)
+
+  sample <- sample[,order(colnames(sample))]
+  sample.info <- sample.info[order(sample.info$sample.name),]
+  sample <- apply(sample, 2, as.numeric)
+
+  group <- unique(sample.info$group)
+
+  if(what == "mv"){
+    mz.ratio <- lapply(group, function(x){
+      temp.idx <- which(sample.info$group == x)
+      apply(sample[,temp.idx], 1, function(x) {
+        sum(is.na(x))/ncol(sample[,temp.idx])
+      })
+    })
+  }else{
+    mz.ratio <- lapply(group, function(x){
+      temp.idx <- which(sample.info$group == x)
+      apply(sample[,temp.idx], 1, function(x) {
+        sum(x == 0)/ncol(sample[,temp.idx])
+      })
+    })
+  }
+
+  mz.ratio <- do.call(cbind, mz.ratio)
+
+  remain.idx <- which(apply(mz.ratio, 1, function(x){
+    any(x <= var.per.cutoff)
+  }))
+
+  sample <- sample[remain.idx,,drop = FALSE]
+  tags <- tags[remain.idx,,drop = FALSE]
+
+  subject <- sample[,match(subject.info[,"sample.name"], colnames(sample))]
+  qc <- sample[,match(qc.info[,"sample.name"], colnames(sample))]
+
+
+  MetFlowData@subject.info <- as.matrix(subject.info)
+  MetFlowData@qc.info <- as.matrix(qc.info)
+  MetFlowData@subject <- as.matrix(subject)
+  MetFlowData@qc <- as.matrix(qc)
+  MetFlowData@tags <- as.matrix(tags)
+  MetFlowData@mv.filter <- "yes"
+  MetFlowData@mv.filter.criteria <-
+    paste("varibale:",
+          var.per.cutoff,
+          "observation:",
+          obs.per.cutoff)
+  options(warn = 0)
+  return(MetFlowData)
+  }
+
+
+
+
 ##remove peaks whose MV ratio > threshold in QC or subject.
 MZfinder <- function(MetFlowData,
                      obs.per.cutoff = 0.5,
@@ -377,9 +448,17 @@ MZfinder <- function(MetFlowData,
   subject.info1 <- data[[3]]
   qc.info1 <- data[[4]]
 
+  ###combine subject and qc20190325
+  subject1 <- list(do.call(cbind, subject1))
+  qc1 <- list(do.call(cbind, qc1))
+  subject.info1 <- list(do.call(rbind, subject.info1))
+  qc.info1 <- list(do.call(rbind, qc.info1))
+
+
+
   var.index <- as.list(rep(NA, length(subject1)))
   if (hasQC == "yes") {
-    ##remove peak whose MV/zero ratio more than 50%
+    ##remove peak whose MV/zero ratio more than 50% in all the batch
     for (i in seq_along(subject1)) {
       if (what == "mv") {
         SXTMinifracData <- SXTMinifrac(
@@ -541,8 +620,8 @@ MZfinder <- function(MetFlowData,
 #' @examples
 #' \donttest{
 #' #load the demo data
-#' data(data, package = "MetCleaning")
-#' data(sample.information, package = "MetCleaning")
+#' data(data, package = "metflowR")
+#' data(sample.information, package = "metflowR")
 #'
 #' ##create a folder for demo
 #' dir.create("demo")
