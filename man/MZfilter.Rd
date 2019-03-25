@@ -31,8 +31,8 @@ Filter feature and samples according to MV/zero ratio.
 \examples{
 \donttest{
 #load the demo data
-data(data, package = "MetCleaning")
-data(sample.information, package = "MetCleaning")
+data(data, package = "metflowR")
+data(sample.information, package = "metflowR")
 
 ##create a folder for demo
 dir.create("demo")
