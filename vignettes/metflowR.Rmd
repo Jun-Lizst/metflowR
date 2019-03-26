@@ -3,9 +3,9 @@ title: "metflowR v0.99.00"
 author: "Xiaotao Shen(shenxt1990@163.com) and Zheng-Jiang Zhu"
 date: '`r Sys.Date()`'
 output:
-  pdf_document: default
-  html_document: default
   word_document: default
+  html_document: default
+  pdf_document: default
 vignette: |
   %\VignetteIndexEntry{Vignette Title} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
@@ -55,6 +55,22 @@ write.csv(sample.information , "sample.information.csv", row.names = FALSE)
 library(metflowR)
 metflowR(polarity = "positive")
 ```
+
+*注意*：需要将路径设置到放置文件的地方。
+
+
+*metflowR中的所有参数如下：*
+
+1. data:peak table数据的名字，比如有两个batch的数据，那就写成data = c("batch1.csv", "batch2.csv")。必须为csv文件。
+2. sample.information: 样品信息文件的名字，比如叫做sample.information，那就写成 sample.information = "sample.information.csv"。必须为csv文件。
+3. polarity:正离子(positive)还是负离子(negative)数据。
+4. combine.mz.tol: batch alignment合并时的m/z的tolerance，默认为25 ppm。
+5. combine.rt.tol: batch alignment合并时的RT的tolerance，默认为30 s。
+6. var.mv.cutoff: 如果某个变量（代谢物峰）中的缺失值（MV）的比例高于该值，则该峰去除掉，默认为0.5（50%）。
+7. imputation.method: 缺失值补齐的方法，默认为knn。
+8. k: KNN缺失值补齐中k number的数目，默认为10。
+9. var.zero.cutoff:如果某个变量（代谢物峰）中的零值的比例高于该值，则该峰去除掉，默认为0.5（50%）。
+10. multiple: SVR normalization中的使用相关性最高的几个峰作为自变量，默认为5。
 
 ### Running results of *metflowR*
 1. Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to remove them or not. We recommend removing all of them.

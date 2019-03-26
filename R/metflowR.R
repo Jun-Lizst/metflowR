@@ -680,14 +680,14 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
 
 
 
-# .onAttach <- function(libname, pkgname){
-# packageStartupMessage("metflowR
-# Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
-# Maintainer: Xiaotao Shen.\n2019-03-23
-# Version 0.99.00
-# --------------
-# o First release version.")
-# }
+.onAttach <- function(libname, pkgname){
+packageStartupMessage("metflowR
+Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
+Maintainer: Xiaotao Shen.\n2019-03-23
+Version 0.99.00
+--------------
+o First release version.")
+}
 
 packageStartupMessage("metflowR
 Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
