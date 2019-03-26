@@ -1,6 +1,6 @@
 ---
 title: "metflowR v0.99.00"
-author: "Xiaotao Shen(shenxt1990@163.com) and Zheng-Jiang Zhu"
+author: "Dr. Xiaotao Shen(shenxt1990@163.com) and Dr. Zheng-Jiang Zhu"
 date: '`r Sys.Date()`'
 output:
   word_document: default
