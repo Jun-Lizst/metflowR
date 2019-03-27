@@ -7,7 +7,8 @@
 DataNormalization(MetFlowData, path = ".", method = "svr",
   dimension1 = TRUE, optimization = TRUE, begin = 0.5, end = 1,
   step = 0.2, multiple = 5, threads = 2, rerun.loess = TRUE,
-  rerun.svr = TRUE, peakplot = TRUE, datastyle = "tof", user = "other")
+  rerun.svr = TRUE, peakplot = TRUE, datastyle = "tof",
+  user = "other")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

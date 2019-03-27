@@ -7,8 +7,8 @@
 PLSanalysis(MetFlowData, log.scale = 10, scalemethod = "auto",
   plsmethod = "plsreg", path = ".", width = 7, height = 7,
   text = FALSE, ellipse = TRUE, color = c("palegreen", "royalblue",
-  "firebrick1", "yellow", "black", "cyan", "gray48"), shape = c(17, 19, 15,
-  18, 2, 8, 11), cexa = 1, xlim1 = NULL, ylim1 = NULL)
+  "firebrick1", "yellow", "black", "cyan", "gray48"), shape = c(17, 19,
+  15, 18, 2, 8, 11), cexa = 1, xlim1 = NULL, ylim1 = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

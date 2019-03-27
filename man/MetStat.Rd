@@ -4,15 +4,16 @@
 \alias{MetStat}
 \title{MetStat}
 \usage{
-MetStat(MetFlowData, new.group = TRUE, rsd.cutoff = 30, log.scale = FALSE,
-  QC = TRUE, scale.method = "auto", xlim1 = NULL, ylim1 = NULL,
-  plsmethod = "plsr", fc = TRUE, to = c("case", "control"),
-  ratio = "median", test.method = "t", adjust.method = "fdr",
-  foldchange = "foldchange", p = "p", vip = "vip",
-  foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05, vip.cutoff = 0,
-  x = "foldchange", y = "p", z = "vip", col = c("black", "firebrick1"),
-  variable = "all", Group = c("control", "case"), beeswarm = TRUE,
-  pls.analysis = TRUE, pca.analysis = TRUE, uni.test = TRUE, path = ".")
+MetStat(MetFlowData, new.group = TRUE, rsd.cutoff = 30,
+  log.scale = FALSE, QC = TRUE, scale.method = "auto",
+  xlim1 = NULL, ylim1 = NULL, plsmethod = "plsr", fc = TRUE,
+  to = c("case", "control"), ratio = "median", test.method = "t",
+  adjust.method = "fdr", foldchange = "foldchange", p = "p",
+  vip = "vip", foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05,
+  vip.cutoff = 0, x = "foldchange", y = "p", z = "vip",
+  col = c("black", "firebrick1"), variable = "all",
+  Group = c("control", "case"), beeswarm = TRUE, pls.analysis = TRUE,
+  pca.analysis = TRUE, uni.test = TRUE, path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

@@ -5,9 +5,10 @@
 \title{GetWorklist}
 \usage{
 GetWorklist(x = NULL, instrument = "Agilent", name = "worklist",
-  randommethod = "no", samplenumber = NULL, replication = 1, QCstep = 8,
-  conditionQCnumber = 10, testmixstep = 0, injectionfrom = 1,
-  user = "other", dir = "D:\\\\MassHunter\\\\Data\\\\SXT\\\\")
+  randommethod = "no", samplenumber = NULL, replication = 1,
+  QCstep = 8, conditionQCnumber = 10, testmixstep = 0,
+  injectionfrom = 1, user = "other",
+  dir = "D:\\\\MassHunter\\\\Data\\\\SXT\\\\")
 }
 \arguments{
 \item{x}{batch.design file.}

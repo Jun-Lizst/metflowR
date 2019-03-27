@@ -7,9 +7,9 @@
 MetNormalizer(filename = "Metabolomics data", polarity = "none",
   minfrac.qc = 0, minfrac.sample = 0, filter = "no",
   normalization.method = "svr", optimization = TRUE, begin = 0.5,
-  end = 1, step = 0.2, multiple = 5, threads = 3, rerun.loess = TRUE,
-  rerun.svr = TRUE, peakplot = TRUE, datastyle = "tof",
-  dimension1 = TRUE, user = "other", path = ".")
+  end = 1, step = 0.2, multiple = 5, threads = 3,
+  rerun.loess = TRUE, rerun.svr = TRUE, peakplot = TRUE,
+  datastyle = "tof", dimension1 = TRUE, user = "other", path = ".")
 }
 \arguments{
 \item{filename}{Default is "Metabolomics data".}

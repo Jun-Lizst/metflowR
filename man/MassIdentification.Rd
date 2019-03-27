@@ -4,8 +4,8 @@
 \alias{MassIdentification}
 \title{MassIdentification}
 \usage{
-MassIdentification(MetFlowData, mass.tolerance = 30, polarity = "positive",
-  show = 5)
+MassIdentification(MetFlowData, mass.tolerance = 30,
+  polarity = "positive", show = 5)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

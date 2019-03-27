@@ -4,7 +4,8 @@
 \alias{ImportData}
 \title{ImportData}
 \usage{
-ImportData(data = "data.csv", sample.information = "sample.information.csv",
+ImportData(data = "data.csv",
+  sample.information = "sample.information.csv",
   polarity = c("positive", "negative", "none"), hasIS = c("yes", "no"),
   hasQC = c("yes", "no"), peak.identification = c("yes", "no"),
   path = ".")

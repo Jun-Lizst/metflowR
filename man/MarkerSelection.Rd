@@ -4,9 +4,9 @@
 \alias{MarkerSelection}
 \title{MarkerSelection}
 \usage{
-MarkerSelection(MetFlowData, foldchange = "foldchange", p = "p.correct",
-  vip = "vip", foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05,
-  vip.cutoff = 1, path = ".")
+MarkerSelection(MetFlowData, foldchange = "foldchange",
+  p = "p.correct", vip = "vip", foldchange.cutoff = c(4/3, 3/4),
+  p.cutoff = 0.05, vip.cutoff = 1, path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

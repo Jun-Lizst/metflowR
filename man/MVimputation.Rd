@@ -4,12 +4,12 @@
 \alias{MVimputation}
 \title{MVimputation}
 \usage{
-MVimputation(MetFlowData, imputation.method = "knn", k = 10, rowmax = 0.5,
-  colmax = 0.8, maxp = 1500, rng.seed = 362436069, maxiter = 10,
-  ntree = 100, decreasing = FALSE, replace = TRUE, classwt = NULL,
-  cutoff = NULL, strata = NULL, sampsize = NULL, nodesize = NULL,
-  maxnodes = NULL, xtrue = NA, parallelize = "no", nPcs = 2,
-  maxSteps = 100, threshold = 1e-04)
+MVimputation(MetFlowData, imputation.method = "knn", k = 10,
+  rowmax = 0.5, colmax = 0.8, maxp = 1500, rng.seed = 362436069,
+  maxiter = 10, ntree = 100, decreasing = FALSE, replace = TRUE,
+  classwt = NULL, cutoff = NULL, strata = NULL, sampsize = NULL,
+  nodesize = NULL, maxnodes = NULL, xtrue = NA, parallelize = "no",
+  nPcs = 2, maxSteps = 100, threshold = 1e-04)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

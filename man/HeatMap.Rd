@@ -4,11 +4,12 @@
 \alias{HeatMap}
 \title{HeatMap}
 \usage{
-HeatMap(MetFlowData, log.scale = FALSE, color = c("palegreen", "firebrick1",
-  "royalblue", "yellow", "black", "cyan", "gray48"), variable = "all",
-  Group = c("control", "case"), scale.method = "auto",
-  show_rownames = FALSE, show_colnames = FALSE, path = ".", width = 7,
-  height = 7, border_color = NA, fontsize_row = 10, cluster_rows = TRUE,
+HeatMap(MetFlowData, log.scale = FALSE, color = c("palegreen",
+  "firebrick1", "royalblue", "yellow", "black", "cyan", "gray48"),
+  variable = "all", Group = c("control", "case"),
+  scale.method = "auto", show_rownames = FALSE,
+  show_colnames = FALSE, path = ".", width = 7, height = 7,
+  border_color = NA, fontsize_row = 10, cluster_rows = TRUE,
   cluster_cols = TRUE, clustering_method = "ward.D", ...)
 }
 \arguments{

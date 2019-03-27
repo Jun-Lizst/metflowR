@@ -5,15 +5,16 @@
 \title{metflowR}
 \usage{
 metflowR(data = c("batch1.csv", "batch2.csv"),
-  sample.information = "sample.information.csv", polarity = c("positive",
-  "negative", "none"), hasIS = c("no", "yes"), hasQC = c("yes", "no"),
-  combine.mz.tol = 25, combine.rt.tol = 30, mv.filter = TRUE,
-  obs.mv.cutoff = 0.5, var.mv.cutoff = 0.5, imputation.method = "knn",
-  k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500, zero.filter = TRUE,
-  obs.zero.cutoff = 0, var.zero.cutoff = 0.5, normalization = TRUE,
-  method = c("svr", "loess"), multiple = 5, threads = 2,
-  hmdb.matching = FALSE, show = 5, mass.tolerance = 30,
-  mz.tolerance = 30, rt.tolerance = 180, met.plot = FALSE, path = ".",
+  sample.information = "sample.information.csv",
+  polarity = c("positive", "negative", "none"), hasIS = c("no", "yes"),
+  hasQC = c("yes", "no"), combine.mz.tol = 25, combine.rt.tol = 30,
+  mv.filter = TRUE, obs.mv.cutoff = 0.5, var.mv.cutoff = 0.5,
+  imputation.method = "knn", k = 10, rowmax = 0.5, colmax = 0.8,
+  maxp = 1500, zero.filter = TRUE, obs.zero.cutoff = 0,
+  var.zero.cutoff = 0.5, normalization = TRUE, method = c("svr",
+  "loess"), multiple = 5, threads = 2, hmdb.matching = FALSE,
+  show = 5, mass.tolerance = 30, mz.tolerance = 30,
+  rt.tolerance = 180, met.plot = FALSE, path = ".",
   qc.outlier.filter = TRUE, subject.outlier.filter = TRUE,
   integration = TRUE)
 }
