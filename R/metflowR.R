@@ -136,7 +136,10 @@
 #   subject.outlier.filter = TRUE,
 #   integration = TRUE)},silent = FALSE)
 
-
+#
+# metflowR(data = "neg ms1.csv",
+#          sample.information = "sample.information.csv",
+#          polarity = "negative")
 
 setGeneric(name = "metflowR",
            def = function(#ImportData para
@@ -393,7 +396,7 @@ setGeneric(name = "metflowR",
                ##Data Normalization
                if (length(batch) > 1) {
                  peak.plot = FALSE
-               } else{
+               }else{
                  peak.plot = FALSE
                }
                if (all(dir(path.inter) != "met.data.nor")) {
@@ -683,18 +686,20 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
 .onAttach <- function(libname, pkgname){
 packageStartupMessage("metflowR
 Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
-Maintainer: Xiaotao Shen.\n2019-03-23
-Version 0.99.00
+Maintainer: Xiaotao Shen.
+Version 0.99.01 (20190327)
 --------------
-o First release version.")
+o Calculation of zero value ratio is too low.
+o There are all zero values in QC samples when do PCA.")
 }
 
 packageStartupMessage("metflowR
 Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
-Maintainer: Xiaotao Shen.\n2019-03-23
-Version 0.99.00
+Maintainer: Xiaotao Shen.
+Version 0.99.01 (20190327)
 --------------
-o First release version.")
+o Calculation of zero value ratio is too low.
+o There are all zero values in QC samples when do PCA.")
 
 
 

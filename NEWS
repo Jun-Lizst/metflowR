@@ -1,6 +1,11 @@
-Version 0.99.0
+Version 0.99.0 (20190323)
 --------------
 o First release version
+
+Version 0.99.01 (20190327)
+--------------
+o Calculation of zero value ratio is too low.
+o There are all zero values in QC samples when do PCA.
 
 
 

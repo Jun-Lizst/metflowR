@@ -335,8 +335,6 @@ MZfilter <- function(MetFlowData,
 
 
 
-
-
 MZfilter2 <- function(MetFlowData,
                      obs.per.cutoff = 0.5,
                      var.per.cutoff = 0.5,
@@ -364,15 +362,18 @@ MZfilter2 <- function(MetFlowData,
   if(what == "mv"){
     mz.ratio <- lapply(group, function(x){
       temp.idx <- which(sample.info$group == x)
-      apply(sample[,temp.idx], 1, function(x) {
+      temp.sample <- sample[,temp.idx]
+      apply(temp.sample, 1, function(x) {
         sum(is.na(x))/ncol(sample[,temp.idx])
       })
     })
+
   }else{
     mz.ratio <- lapply(group, function(x){
       temp.idx <- which(sample.info$group == x)
-      apply(sample[,temp.idx], 1, function(x) {
-        sum(x == 0)/ncol(sample[,temp.idx])
+      temp.sample <- sample[,temp.idx]
+      apply(temp.sample, 1, function(x) {
+        sum(x == 0)/ncol(temp.sample)
       })
     })
   }
@@ -386,9 +387,27 @@ MZfilter2 <- function(MetFlowData,
   sample <- sample[remain.idx,,drop = FALSE]
   tags <- tags[remain.idx,,drop = FALSE]
 
+
   subject <- sample[,match(subject.info[,"sample.name"], colnames(sample))]
   qc <- sample[,match(qc.info[,"sample.name"], colnames(sample))]
 
+  ###if peaks with NA or zero value > 50%, those peaks should be removed
+  temp.idx1 <- which(apply(qc, 1, function(x){
+    sum(is.na(x))/ncol(qc)
+  }) > 0.5)
+
+  temp.idx2 <- which(apply(qc, 1, function(x){
+    x[is.na(x)] <- 0
+    temp <- sum(x == 0)/ncol(qc)
+  }) > 0.5)
+
+  remove.idx <- union(temp.idx1, temp.idx2)
+
+  if(length(remove.idx) > 0){
+    qc <- qc[-remove.idx,]
+    subject <- subject[-remove.idx,]
+    tags <- tags[-remove.idx,]
+  }
 
   MetFlowData@subject.info <- as.matrix(subject.info)
   MetFlowData@qc.info <- as.matrix(qc.info)

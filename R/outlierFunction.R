@@ -113,11 +113,12 @@ QCOutlierFilter <- function(MetFlowData,
 
 
 
+
+# temp <- QCOutlierFinder(MetFlowData = met.data)
 #QC outlier filtering according to zero ratio and PCA
 QCOutlierFinder <- function(MetFlowData,
                             CI = 0.95,
                             path = ".") {
-
   options(warn = -1)
   if (path != ".") {
     dir.create(path)

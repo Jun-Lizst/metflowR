@@ -1,7 +1,7 @@
 Package: metflowR
 Type: Package
 Title: metflowR
-Version: 0.99.00
+Version: 0.99.01
 Date: 2019-03-23
 Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>

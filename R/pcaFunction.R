@@ -471,6 +471,16 @@ SXTpca <- function(subject = NULL,
                    QC = FALSE,
                    scale.method = "auto",
                    path = ".") {
+  ##remove the peaks with zero ratio > 50
+  temp.idx1 <- apply(subject, 1, function(x) sum(x == 0)/ncol(subject)) > 0.5
+  temp.idx1 <- which(temp.idx1)
+  if(length(temp.idx1) > 0){
+    subject <- subject[-temp.idx1, ]
+    if(!is.null(qc)) {
+      qc <- qc[-temp.idx1,]
+    }
+  }
+
   if (path != ".") {
     dir.create(path)
   }
@@ -515,8 +525,7 @@ SXTpca <- function(subject = NULL,
 
   if (QC) {
     int <- cbind(subject, qc)
-  }
-  else {
+  } else {
     int <- subject
   }
 
@@ -547,6 +556,8 @@ SXTpca <- function(subject = NULL,
       int <- t(int)
     })
   }
+
+
 
   ## PCA analysis
   int.pca <-

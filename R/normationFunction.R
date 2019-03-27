@@ -57,6 +57,16 @@
 #'}
 
 ### Data normalization for MetFlowData
+
+# temp <- DataNormalization(
+#   MetFlowData = met.data,
+#   method = "svr",
+#   multiple = 5,
+#   threads = 2,
+#   path = ".",
+#   peakplot = FALSE
+# )
+
 DataNormalization <- function(MetFlowData,
                               path = ".",
                               method = "svr",
@@ -316,6 +326,17 @@ DataNormalization <- function(MetFlowData,
 #' before and after SVR normalization.
 #' @return rsd.change.csv: A table show the RSDs of peaks before and
 #' after SVR normalization.
+
+# MetNormalizer(
+#   normalization.method = "svr",
+#   peakplot = FALSE,
+#   multiple = 5,
+#   rerun.svr = TRUE,
+#   datastyle = "tof",
+#   dimension1 = TRUE,
+#   user = "other",
+#   path = "D:/study/test/7 Normalization result/Batch 1 normalization"
+# )
 
 MetNormalizer <- function(filename = "Metabolomics data",
                           polarity = "none",
@@ -1327,7 +1348,26 @@ SXTdatafilter <- function(sample, qc, tags, sampleorder, qcorder,
 }
 
 
+
+
 ##############svr normalization function
+
+# SXTsvrNor(
+#   sample = sample,
+#   QC = qc,
+#   tags = tags,
+#   sample.order = sampleorder,
+#   QC.order = qcorder,
+#   multiple = 5,
+#   path = path,
+#   rerun = TRUE,
+#   peakplot = FALSE,
+#   datastyle = "tof",
+#   dimension1 = TRUE,
+#   threads = 3
+# )
+
+
 SXTsvrNor <- function(sample,
                       QC,
                       tags,
@@ -1343,7 +1383,7 @@ SXTsvrNor <- function(sample,
                       threads = 1
                       #parameters setting
 ) {
-  #
+
   options(warn = -1)
   ######is there the e1071?
   if (is.null(path)) {
@@ -1692,6 +1732,10 @@ SXTsvrNor <- function(sample,
 # }
 
 
+# svr.function(index = index, sample = sample, QC = qc,
+#              sample.order = sampleorder, QC.order = qcorder,
+#              multiple = 5)
+
 setGeneric(name = "svr.function",
            def = function(index,
                           sample,
@@ -1744,6 +1788,7 @@ setGeneric(name = "svr.function",
                return(list(sample.nor1, QC.nor1))
 
              })
+
 
              sample.nor <- lapply(data.nor, function(x) x[[1]])
              QC.nor <- lapply(data.nor, function(x) x[[2]])
