@@ -1436,6 +1436,12 @@ setClass("MetFlowData",
 #' setwd("demo")
 #'RSDoverview(met.data, met.data, path = "Demo for RSDoverview")
 
+# RSDoverview(
+#   MetFlowData.before = met.data.zero.filter,
+#   MetFlowData.after = met.data,
+#   path = file.path(path, "10 RSD overview")
+# )
+
 RSDoverview <- function(MetFlowData.before,
                         MetFlowData.after,
                         path = ".") {

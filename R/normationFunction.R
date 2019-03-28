@@ -57,7 +57,7 @@
 #'}
 
 ### Data normalization for MetFlowData
-
+#fix bug
 # temp <- DataNormalization(
 #   MetFlowData = met.data,
 #   method = "svr",
@@ -1731,11 +1731,6 @@ SXTsvrNor <- function(sample,
 #   cat("SVR normalization is done\n")
 # }
 
-
-# svr.function(index = index, sample = sample, QC = qc,
-#              sample.order = sampleorder, QC.order = qcorder,
-#              multiple = 5)
-
 setGeneric(name = "svr.function",
            def = function(index,
                           sample,
@@ -1751,6 +1746,13 @@ setGeneric(name = "svr.function",
              data.order <- c(sample.order, QC.order)
 
              data.nor <- lapply(c(1:ncol(sample)), function(i){
+
+               if(sum(QC[,i] == 0)/nrow(QC) > 0.8){
+                 sample.nor1 <- sample[,i]
+                 QC.nor1 <- QC[,i]
+                 return(list(sample.nor1, QC.nor1))
+               }
+
                if (multiple != 1) {
                  correlation <- abs(cor(x = rbind(sample, QC)[,i], y = rbind(sample, QC))[1,])
                  # cor.peak <-

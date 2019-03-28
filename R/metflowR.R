@@ -136,10 +136,10 @@
 #   subject.outlier.filter = TRUE,
 #   integration = TRUE)},silent = FALSE)
 
-#
-# metflowR(data = "neg ms1.csv",
+# fix bugs
+# metflowR(data = "data.csv",
 #          sample.information = "sample.information.csv",
-#          polarity = "negative")
+#          polarity = "positive")
 
 setGeneric(name = "metflowR",
            def = function(#ImportData para
@@ -687,19 +687,17 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
 packageStartupMessage("metflowR
 Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
 Maintainer: Xiaotao Shen.
-Version 0.99.01 (20190327)
+Version 0.99.02 (20190328)
 --------------
-o Calculation of zero value ratio is too low.
-o There are all zero values in QC samples when do PCA.")
+o When one peak in all QC are 0, no normalization for this peak.")
 }
 
 packageStartupMessage("metflowR
 Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
 Maintainer: Xiaotao Shen.
-Version 0.99.01 (20190327)
+Version 0.99.02 (20190328)
 --------------
-o Calculation of zero value ratio is too low.
-o There are all zero values in QC samples when do PCA.")
+o When one peak in all QC are 0, no normalization for this peak.")
 
 
 

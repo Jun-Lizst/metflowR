@@ -1,8 +1,8 @@
 Package: metflowR
 Type: Package
 Title: metflowR
-Version: 0.99.01
-Date: 2019-03-23
+Version: 0.99.02
+Date: 2019-03-28
 Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: A data cleaning (preparation) and statistical analysis pipeline for large-scale mass spectrometry-based untargeted metabolomics.
